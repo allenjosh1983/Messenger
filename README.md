@@ -9,11 +9,11 @@ Features Implemented
 
  Project Structure
 barkeep/
-├── public/
-│   ├── index.html       // Frontend interface
-│   ├── client.js        // Client-side socket logic
-├── src/
-│   └── server.js        // Server-side logic (Express + Socket.IO)
+ public/
+ index.html       // Frontend interface
+ client.js        // Client-side socket logic
+ src/
+server.js        // Server-side logic (Express + Socket.IO)
 
 
 
