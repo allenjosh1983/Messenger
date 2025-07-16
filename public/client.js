@@ -10,6 +10,11 @@ const usernameInput = document.getElementById('usernameInput');
 const messageInput = document.getElementById('messageInput');
 const sendBtn = document.getElementById('sendBtn');
 const chatWindow = document.getElementById('chatWindow');
+messageInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter' && messageInput.value.trim() !== '') {
+    sendBtn.click();
+  }
+});
 
 
 // Send message to server when user clicks "Send"
