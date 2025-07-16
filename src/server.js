@@ -1,33 +1,27 @@
 const express = require('express');
-const http = require('http');
-const { Server } = require('socket.io');
-const cors = require('cors');
-
 const app = express();
-const server = http.createServer(app);
-const io = new Server(server, {
-  cors: { origin: '*' }
-});
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
 
-app.use(cors());
+// Serve static files (index.html, client.js) from the 'public' folder
+app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-  res.send('Messaging Server is live.');
-});
+// Socket.IO communication
+io.on('connection', (socket) => {
+  console.log('A user connected');
 
-io.on('connection', socket => {
-  console.log(`🔌 Client connected: ${socket.id}`);
-
-  socket.on('send_message', data => {
-    console.log(`📨 Message from ${data.sender}: ${data.text}`);
-    io.emit('receive_message', data); // Broadcast to all clients
+  socket.on('chatMessage', (msg) => {
+    console.log('Message received:', msg);
+    io.emit('chatMessage', msg);
   });
 
   socket.on('disconnect', () => {
-    console.log(`❌ Client disconnected: ${socket.id}`);
+    console.log('A user disconnected');
   });
 });
 
-server.listen(3001, () => {
-  console.log('✅ Server listening on http://localhost:3001');
+// Start the server
+const PORT = process.env.PORT || 3000;
+http.listen(PORT, () => {
+  console.log(`Server is running at http://localhost:${PORT}`);
 });
