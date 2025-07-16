@@ -1,4 +1,4 @@
-🧾 Barkeep Messenger
+ Barkeep Messenger
 A lightweight, real-time chat application built with Node.js, Express, and Socket.IO. Users can send and receive messages across browser tabs with live updates, all through a clean, minimalist interface.
 Features Implemented
 -  Real-time messaging across multiple clients using Socket.IO
@@ -7,7 +7,7 @@ Features Implemented
 -  Auto-scrolling chat window
 -  Express server configured for static asset delivery
 
-📁 Project Structure
+ Project Structure
 barkeep/
 ├── public/
 │   ├── index.html       // Frontend interface
@@ -29,7 +29,7 @@ http://localhost:3000
 - Test in multiple tabs
 Open two browser windows and enter different usernames to see live message broadcasting.
 
-🛠 Technologies Used
+ Technologies Used
 | Tech | Role | 
 | Node.js | Server runtime | 
 | Express | HTTP server + static file hosting | 
