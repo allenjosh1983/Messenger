@@ -1,42 +1,37 @@
-.gradle
-build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.env
+*.log
 
-### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
-*.iws
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Testing and coverage
+.pytest_cache/
+htmlcov/
+coverage.xml
+.tox/
+
+# IDE/editor configs
+.idea/
+.vscode/
 *.iml
 *.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
+*.iws
 
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-
-### VS Code ###
-.vscode/
-
-### Mac OS ###
+# Operating system files
 .DS_Store
+Thumbs.db
+
+# Miscellaneous
+.cache/
+*.sqlite3
+
+# Build leftovers
+build/
+dist/
+*.bak
