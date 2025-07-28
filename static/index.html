@@ -1,85 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Barkeep Messenger</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background-color: #f0f0f0;
-    }
-    h1 {
-      color: #333;
-    }
-    #chatWindow {
-      border: 1px solid #ccc;
-      padding: 10px;
-      height: 300px;
-      overflow-y: auto;
-      background-color: #fff;
-      margin-bottom: 10px;
-    }
-    #messageInput, #usernameInput {
-      width: 70%;
-      padding: 10px;
-      margin-top: 5px;
-    }
-    #sendBtn {
-      padding: 10px 15px;
-      margin-left: 10px;
-    }
-    .message {
-      margin-bottom: 8px;
-    }
-    .timestamp {
-      color: #999;
-      font-size: 0.8em;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css" />
 </head>
 <body>
-  <h1>Barkeep Messenger</h1>
 
-  <div id="chatWindow"></div>
+  <!-- Dark header zone -->
+  <header class="header-strip">
+    <div class="corner-title">Barkeep</div>
+  </header>
 
-  <input type="text" id="usernameInput" placeholder="Enter your name" />
-  <br><br>
-  <input type="text" id="messageInput" placeholder="Type your message here" />
-  <button id="sendBtn">Send</button>
+  <!-- Chat panel -->
+  <main class="chat-window">
+    <div id="chat">
+      <ul id="messageList">
+        <!-- Messages will be injected here as <li> elements -->
+      </ul>
+    </div>
+  </main>
+
+  <!-- Input area -->
+  <footer id="input-area">
+    <input type="text" id="nameInput" placeholder="Enter your name" />
+    <input type="text" id="messageInput" placeholder="Type your message here" />
+    <button onclick="sendMessage()">Send</button>
+  </footer>
 
   <script>
-    const socket = new WebSocket("ws://localhost:8000/ws");
+    const nameInput = document.getElementById("nameInput");
+    const input = document.getElementById("messageInput");
+    const messageList = document.getElementById("messageList");
 
-    socket.onmessage = event => {
-      const data = JSON.parse(event.data);
-      const chatWindow = document.getElementById("chatWindow");
-      const msgDiv = document.createElement("div");
-      msgDiv.className = "message";
+    let socket;
+    let senderName = "Anonymous";
 
-      const timestampSpan = document.createElement("span");
-      timestampSpan.className = "timestamp";
-      timestampSpan.textContent = data.timestamp ? `[${data.timestamp}] ` : "";
+    function scrollToBottom() {
+      messageList.scrollTop = messageList.scrollHeight;
+    }
 
-      const textSpan = document.createElement("span");
-      textSpan.textContent = `${data.sender}: ${data.text}`;
+    function initializeSocket() {
+      senderName = nameInput.value.trim() || "Anonymous";
+      socket = new WebSocket(`ws://localhost:8000/ws?sender=${encodeURIComponent(senderName)}`);
 
-      msgDiv.appendChild(timestampSpan);
-      msgDiv.appendChild(textSpan);
+      socket.onmessage = function (event) {
+        try {
+          const data = JSON.parse(event.data);
 
-      chatWindow.appendChild(msgDiv);
-      chatWindow.scrollTop = chatWindow.scrollHeight;
-    };
+          const container = document.createElement("li");
+          container.className = data.is_self ? "message-container outgoing" : "message-container incoming";
 
-    document.getElementById("sendBtn").addEventListener("click", () => {
-      const sender = document.getElementById("usernameInput").value.trim() || "Anonymous";
-      const text = document.getElementById("messageInput").value.trim();
-      if (text.length > 0) {
-        const payload = { sender, text };
-        socket.send(JSON.stringify(payload));
-        document.getElementById("messageInput").value = "";
+          const username = document.createElement("div");
+          username.className = "message-username";
+          username.textContent = data.username || senderName;
+
+          const bubble = document.createElement("div");
+          bubble.className = "message-bubble";
+          bubble.textContent = data.content || "[No Content]";
+
+          const timestamp = document.createElement("div");
+          timestamp.className = "message-timestamp";
+          timestamp.textContent = data.timestamp || new Date().toLocaleTimeString();
+
+          container.appendChild(username);
+          container.appendChild(bubble);
+          container.appendChild(timestamp);
+          messageList.appendChild(container);
+          scrollToBottom();
+        } catch (err) {
+          console.error("Failed to parse message:", event.data, err);
+        }
+      };
+    }
+
+    input.addEventListener("keypress", function (e) {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    function sendMessage() {
+      const content = input.value.trim();
+      if (content !== "" && socket && socket.readyState === WebSocket.OPEN) {
+        socket.send(JSON.stringify({
+          sender: senderName,
+          content: content
+        }));
+        input.value = "";
+      }
+    }
+
+    nameInput.addEventListener("change", initializeSocket);
+
+    window.addEventListener("load", () => {
+      if (nameInput.value.trim()) {
+        initializeSocket();
       }
     });
   </script>
+
 </body>
 </html>

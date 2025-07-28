@@ -1,0 +1,154 @@
+/* Global Reset & Font */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #121212;
+  color: #eee;
+}
+
+/* Corner Title */
+.corner-title {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-size: 2.2em;
+  font-weight: 600;
+  color: #7D5BA6;
+}
+
+/* Chat Area */
+#chat {
+  padding: 80px 24px 100px;
+}
+
+/* Message List Container */
+#messageList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Message Container Alignment */
+.message-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 75%;
+  padding: 0 16px;
+}
+
+.message-container.outgoing {
+  margin-left: auto;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.message-container.incoming {
+  margin-right: auto;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Username Label */
+.message-username {
+  font-weight: 600;
+  font-size: 0.9em;
+  color: #bbb;
+  margin-bottom: 4px;
+}
+
+/* Chat Bubble Styles */
+.message-bubble {
+  background-color: #2a2a2a;
+  padding: 14px 18px;
+  border-radius: 18px;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #eee;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.message-container.outgoing .message-bubble {
+  background-color: #7D5BA6;
+  color: #fff;
+}
+
+/* Timestamps */
+.message-timestamp {
+  font-size: 0.75em;
+  color: #888;
+  margin-top: 6px;
+}
+
+/* Input Area */
+#input-area {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #1a1a1a;
+  padding: 12px 24px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border-top: 1px solid #333;
+}
+
+#nameInput,
+#messageInput {
+  flex: 1;
+  padding: 10px 12px;
+  background-color: #2a2a2a;
+  border: none;
+  border-radius: 6px;
+  color: #eee;
+  font-size: 0.95em;
+}
+
+#nameInput::placeholder,
+#messageInput::placeholder {
+  color: #888;
+}
+
+button {
+  padding: 10px 16px;
+  background-color: #7D5BA6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+/* Header strip (top bar) */
+.header-strip {
+  background-color: #121212;  /* Matches body background for a unified strip */
+  padding: 24px 24px 40px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Reposition the corner-title inside header */
+.corner-title {
+  position: static; /* Remove absolute positioning */
+  font-size: 2.2em;
+  font-weight: 600;
+  color: #7D5BA6;
+}
+
+/* Main chat window area */
+.chat-window {
+  background-color: #2f2f2f;  /* Lighter tone for contrast */
+  padding: 80px 24px 120px;   /* Gives space around messageList */
+  min-height: calc(100vh - 160px); /* Reserves room for header/footer */
+}
+.header-strip {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(to bottom, #121212, #1c1c1c);
+  padding: 24px 24px 40px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
