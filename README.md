@@ -17,37 +17,24 @@ Getting Started
 To set up and run Barkeep locally:
 # Install dependencies
 pip install -r requirements.txt
+This installs required packages (fastapi, uvicorn)
 
 # Launch server
 uvicorn app.main:app --reload
-This installs required packages (fastapi, uvicorn) and starts the app in live-reload mode 
+this starts the app in live-reload mode 
 
 
-- Access the app
-Open a browser and visit:
-http://Perfect — here’s your updated Installation section with the default URL clearly noted:
-
-🛠 Installation
-To set up and run Barkeep locally:
-# Install dependencies
-pip install -r requirements.txt
-
-# Launch server
-uvicorn app.main:app --reload
-
-
-Once running, your app will be accessible at:
+# Access the app
+Once running, open a browser and visit:
 http://127.0.0.1:8000
 This is the default URL for FastAPI apps running on localhost with port 8000. 
 
 
-
-Would you like me to reassemble the full README with this included, or are you planning to paste it into place manually? I’ve got it queued up if you want the complete file.
-
-
-
 - Test in multiple tabs
 Open two browser windows and enter different usernames to see live message broadcasting with timestamps.
+<img width="3840" height="2160" alt="image" src="https://github.com/user-attachments/assets/71559050-e040-4b87-8f8d-6efaa6aa3a14" />
+
+
 Technologies Used
 
 ## 🛠️ Technologies Used
