@@ -15,13 +15,13 @@ Project Structure
 
 Getting Started
 To set up and run Barkeep locally:
-# Install dependencies
-pip install -r requirements.txt
-This installs required packages (fastapi, uvicorn)
+# Install dependencies- This installs required packages (fastapi, uvicorn)
 
-# Launch server
+pip install -r requirements.txt
+
+# Launch server- this starts the app in live-reload mode 
 uvicorn app.main:app --reload
-this starts the app in live-reload mode 
+
 
 
 # Access the app
