@@ -14,18 +14,15 @@ Project Structure
 
 
 Getting Started
-To set up and run Barkeep locally:
-# Install dependencies- This installs required packages (fastapi, uvicorn)
-
+# Install dependencies
 pip install -r requirements.txt
 
-# Launch server- this starts the app in live-reload mode 
+# Launch server
 uvicorn app.main:app --reload
 
 
 
 # Access the app
-Once running, open a browser and visit:
 http://127.0.0.1:8000
 This is the default URL for FastAPI apps running on localhost with port 8000. 
 
