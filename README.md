@@ -10,8 +10,6 @@ Features Implemented
 - FastAPI server configured for static asset delivery
 
 Project Structure
-<<<<<<< HEAD
-<img width="3840" height="2160" alt="image" src="https://github.com/user-attachments/assets/80a43bce-d35a-4719-900c-f04440a97411" />
 =======
 
 ```plaintext
@@ -28,8 +26,6 @@ Project Structure
 │   ├── test-client.html  # HTML file
 ├── treegen.py  # Python module
 ```
-
->>>>>>> f82cd61 (updated readme and requirements.txt)
 
 
 Getting Started
