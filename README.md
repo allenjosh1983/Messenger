@@ -33,8 +33,8 @@ Project Structure
 
 
 Getting Started
-# Install dependencies
-pip install -r requirements.txt
+# Install dependencies (fast api, uvicorn)
+```pip install -r requirements.txt```
 
 # Launch server
 uvicorn app.main:app --reload
