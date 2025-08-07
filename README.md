@@ -29,11 +29,11 @@ Project Structure
 
 
 Getting Started
-# Install dependencies
-pip install -r requirements.txt
+# Install dependencies fastapi uvicorn
+``` pip install -r requirements.txt ```
 
 # Launch server
-uvicorn app.main:app --reload
+``` uvicorn app.main:app --reload ```
 
 
 
