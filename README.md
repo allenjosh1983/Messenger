@@ -10,8 +10,6 @@ Features Implemented
 - FastAPI server configured for static asset delivery
 
 Project Structure
-<<<<<<< HEAD
-<img width="3840" height="2160" alt="image" src="https://github.com/user-attachments/assets/80a43bce-d35a-4719-900c-f04440a97411" />
 =======
 
 ```plaintext
@@ -29,15 +27,18 @@ Project Structure
 ├── treegen.py  # Python module
 ```
 
->>>>>>> f82cd61 (updated readme and requirements.txt)
-
 
 Getting Started
+<<<<<<< HEAD
 # Install dependencies (fast api, uvicorn)
 ```pip install -r requirements.txt```
+=======
+# Install dependencies fastapi uvicorn
+``` pip install -r requirements.txt ```
+>>>>>>> 8c3ca679764e851ee59d6f1458f710e855b05bd3
 
 # Launch server
-uvicorn app.main:app --reload
+``` uvicorn app.main:app --reload ```
 
 
 
