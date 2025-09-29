@@ -55,7 +55,7 @@ This is the default URL for FastAPI apps running on localhost with port 8000.
 
 - Test in multiple tabs
 Open two browser windows and enter different usernames to see live message broadcasting with timestamps.
-<img width="3840" height="2160" alt="image" src="https://github.com/user-attachments/assets/71559050-e040-4b87-8f8d-6efaa6aa3a14" />
+<<img width="3840" height="2160" alt="Image" src="https://github.com/user-attachments/assets/021e7638-0844-4164-86f2-6cf75483e33c" /> />
 
 
 Technologies Used
