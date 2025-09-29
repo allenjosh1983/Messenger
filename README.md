@@ -1,4 +1,4 @@
-<img width="3840" height="2160" alt="image" src="https://github.com/user-attachments/assets/a8398565-777a-4678-98f8-f3f49dd16b36" />
+<img src="https://github.com/user-attachments/assets/your-image-id" alt="screenshot" width="800" />
 
 Barkeep Messenger is
 A lightweight, real-time chat application built with Python, FastAPI, and WebSocket. Users can send and receive messages across browser tabs with live updates, all through a clean, minimalist interface.
